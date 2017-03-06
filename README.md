@@ -1,3 +1,4 @@
+# Paper Submission Date Plotter (PaSDP)
 (c) Moritz Beller, 2017
 
 An R script that generates an interactive plot of the last 5 days before
@@ -9,6 +10,8 @@ reviewers.
 
 ![Sample plot](sample-output.png)
 
+
+# How to use
 The script expects its input to be in files named `<venue>-arrivals.csv`. Every
 venue should have its own file. This file should contain a parseable version of
 every single submission time, like so:
