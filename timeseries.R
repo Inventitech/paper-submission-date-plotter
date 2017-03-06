@@ -3,33 +3,14 @@ library(parsedate)
 library(scales)
 library(plotly)
 
-# (1) Go to EasyChair
-# (2) Manually remove wrong rows left-over from XPATH '//td/span' https://data-miner.io/recipe/54314
+files <- list.files(path = ".", pattern = "*-arrivals.csv$")
+for(file in files) {
+  data <- read.csv(file, header = F)
+  write.csv(data, paste(file, "-cleaned", sep=""))
+}
 
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-fse2015.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-data <- read.csv("***REMOVED***-arrivals.csv", header = F)
-write.csv(data, "arrivals-***REMOVED***.csv")
-
-
-system("for f in arrivals-*; do sed s/$/,${f}/ -i ${f}; done;")
-system("cat arrivals-* > arrivals.csv")
+system("for f in *-cleaned; do sed s/$/,${f}/ -i ${f}; done;")
+system("cat *-cleaned > arrivals.csv")
 
 # do some manual cleanup of file (remove headers manually)
 system("grep -v 'V1' arrivals.csv > arrivals-t.csv && mv arrivals-t.csv arrivals.csv")
