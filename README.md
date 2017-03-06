@@ -7,9 +7,11 @@ behavior across venues, and infer how many submissions you can expect this
 year. This might be helpful to, e.g. early on increase the number of your
 reviewers.
 
-It expects the raw input to be in the form of `<venue>-arrivals.csv`. Every
+![Sample plot](sample-output.png)
+
+The script expects its input to be in files named `<venue>-arrivals.csv`. Every
 venue should have its own file. This file should contain a parseable version of
-the submission time, like
+every single submission time, like so:
 
 ```
 "Dec 14, 13:30"
@@ -17,5 +19,5 @@ the submission time, like
 ```
 
 When you use EasyChair, it is very easy to extract these dates. On the site
-`All submissions`, execute the xpath '//td/span' (or, this data miner receipe:
+`All submissions`, execute the xpath `//td/span` (or, this data miner receipe:
 https://data-miner.io/recipe/54314)

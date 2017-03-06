@@ -16,7 +16,7 @@ system("cat *-cleaned > arrivals.csv")
 system("grep -v 'V1' arrivals.csv > arrivals-t.csv && mv arrivals-t.csv arrivals.csv")
 
 system("sed 's/\\.csv//' -i arrivals.csv")
-system("sed 's/arrivals-//' -i arrivals.csv")
+system("sed 's/-arrivals-cleaned//' -i arrivals.csv")
 system("sed '1s/^/id,date,venue\\n/' -i arrivals.csv")
 
 data <- read.csv("arrivals.csv")
@@ -28,8 +28,6 @@ for(v in unique(data$venue)) {
   data.s <- subset(data, venue == v)
   
   max.date <- max(data.s$date)
-  if(v == "***REMOVED***")
-    max.date <- as.POSIXct("2017-02-28 13:00:00", format = "%Y-%m-%d %H:%M:%S")
   max.id <- max(data.s$id)
   
   threshold.date <- max.date - as.difftime(5, unit="days")
