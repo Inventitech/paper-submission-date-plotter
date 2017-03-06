@@ -12,7 +12,6 @@ for(file in files) {
 system("for f in *-cleaned; do sed s/$/,${f}/ -i ${f}; done;")
 system("cat *-cleaned > arrivals.csv")
 
-# do some manual cleanup of file (remove headers manually)
 system("grep -v 'V1' arrivals.csv > arrivals-t.csv && mv arrivals-t.csv arrivals.csv")
 
 system("sed 's/\\.csv//' -i arrivals.csv")
